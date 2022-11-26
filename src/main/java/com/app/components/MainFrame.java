@@ -1,53 +1,51 @@
 package com.app.components;
 
-import javax.swing.JFrame;
-
 import org.apache.commons.lang3.StringUtils;
 
-import com.app.consts.Constant;
+import com.app.abstracts.AbstractFrame;
+import com.app.abstracts.AbstractPanel;
 import com.app.consts.Constant.GamenSize;
 
-public class MainFrame extends JFrame {
-
+public class MainFrame extends AbstractFrame {
+	
+	/**
+	 * コンストラクタ
+	 * @param args
+	 */
 	public MainFrame(String[] args) {
-		// タイトル
-		super.setTitle(Constant.TITLE);
-		// 閉じるボタンがクリックされた時にアプリケーションを終了するように設定する
-		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// 画面サイズの選択
 		this.selectedGamenSize(args);
 		// フレームをWindowsの中央の位置に表示する
 		super.setLocationRelativeTo(null);
 	}
 	
+	/**
+	 * 画面サイズを選択する
+	 * @param args
+	 */
 	private void selectedGamenSize(String[] args) {
 		
 		if(args.length < 1) {
-			this.setSize(GamenSize.HD);
+			super.setSize(GamenSize.HD);
 		} else if(StringUtils.equals(args[0],GamenSize.HI_VISION.getSelectNo())) {
-			this.setSize(GamenSize.HI_VISION);
+			super.setSize(GamenSize.HI_VISION);
 		}else if(StringUtils.equals(args[0],GamenSize.HD.getSelectNo())) {
-			this.setSize(GamenSize.HD);
+			super.setSize(GamenSize.HD);
 		}else if(StringUtils.equals(args[0],GamenSize.Full_HD.getSelectNo())) {
-			this.setSize(GamenSize.Full_HD);
+			super.setSize(GamenSize.Full_HD);
 		}else {
-			this.setSize(GamenSize.HI_VISION);
+			super.setSize(GamenSize.HI_VISION);
 		}
 	}
-	
-	/**
-	 * 画面サイズをセット
-	 * @param size 画面サイズ
-	 */
-	private void setSize(GamenSize size) {
-		super.setSize(size.getX(), size.getY());
-	}
-	
+		
 	/**
 	 * ウィンドウを開く
 	 */
 	public void open() {
+		AbstractPanel panel = new MainPanel();
+		super.getContentPane().add(panel);
 		super.setVisible(true);
+		
 	}
 
 }

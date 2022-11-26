@@ -3,6 +3,10 @@ package com.app.consts;
 public class Constant {
 
 	public static final String TITLE = "じゃんけんゲーム";
+	
+	public static final String START_BUTTON = "START";
+	
+	public static final String NO_NAME_SET = null;
 
 	public enum GamenSize {
 		HI_VISION("1", 1440, 1080), HD("2", 1280, 720), Full_HD("3", 1920, 1080),;
@@ -31,6 +35,20 @@ public class Constant {
 			return y;
 		}
 
+	}
+
+	public enum JankenAction {
+		ROCK("グー"), SCISSORS("チョキ"), PAPER("パー");
+
+		private String name;
+
+		private JankenAction(String name) {
+			this.name = name;
+		}
+		
+		public String getName() {
+			return name;
+		}
 	}
 
 }

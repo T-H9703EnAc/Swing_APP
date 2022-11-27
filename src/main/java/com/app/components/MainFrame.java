@@ -25,16 +25,14 @@ public class MainFrame extends AbstractFrame {
 	 */
 	private void selectedGamenSize(String[] args) {
 		
-		if(args.length < 1) {
-			super.setSize(GamenSize.HD);
-		} else if(StringUtils.equals(args[0],GamenSize.HI_VISION.getSelectNo())) {
+		if(StringUtils.equals(args[0],GamenSize.HI_VISION.getSelectNo())) {
 			super.setSize(GamenSize.HI_VISION);
 		}else if(StringUtils.equals(args[0],GamenSize.HD.getSelectNo())) {
 			super.setSize(GamenSize.HD);
 		}else if(StringUtils.equals(args[0],GamenSize.Full_HD.getSelectNo())) {
 			super.setSize(GamenSize.Full_HD);
 		}else {
-			super.setSize(GamenSize.HI_VISION);
+			super.setSize(GamenSize.HD);
 		}
 	}
 		
